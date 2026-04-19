@@ -80,7 +80,7 @@ class SiameseUNet(nn.Module):
         x1_A, x2_A, x3_A, x4_A, x5_A = self.forward_one(x_A)
         x1_B, x2_B, x3_B, x4_B, x5_B = self.forward_one(x_B)
 
-        # 修复了原来直接 max() 导致的差异丢失问题
+        
         if self.fusion_mode == 'diff':
             bottleneck = torch.abs(x5_A - x5_B)
         else:
