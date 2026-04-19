@@ -15,6 +15,8 @@ plot_final_comparison*
 plot_sca_ablation*
 eval_all*
 eval_thesis*
+compare*
+run*
 
 checkpoint/
 checkpoint.rar
