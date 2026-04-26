@@ -60,7 +60,7 @@ run.bat
 Alternatively, you can run individual models using train.py:
 ```python
 python train.py --model unet --fusion_mode diff
-python train.py --model sca_net --ablation full
+python train.py --model ca_net --ablation full
 ```
 3. Evaluation
 ```python

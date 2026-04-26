@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import os
 
 def resolve_history_path(base_name):
-    """自动匹配带有或不带有 fusion_mode 后缀的文件夹路径"""
+
     paths_to_try = [
         f'./results/{base_name}/history.json',
         f'./results/{base_name}_diff/history.json',
@@ -13,15 +13,15 @@ def resolve_history_path(base_name):
     for p in paths_to_try:
         if os.path.exists(p):
             return p
-    print(f"⚠️ Warning: 找不到模型 {base_name} 的训练日志，请检查是否已完成训练。")
+    print(f"error")
     return None
 
 def compare():
-    # 仅保留你的三大核心模型
+    
     models_config = {
-        'run_unet_diff':      {'label': 'Siam-UNet (Baseline)', 'style': '--', 'color': '#1f77b4'}, # 蓝色虚线
-        'run_resunet_concat': {'label': 'Siam-ResUNet (Strong)', 'style': '-.', 'color': '#ff7f0e'}, # 橙色点划线
-        'run_sca_net_full':   {'label': 'SCA-Net (Ours)',       'style': '-',  'color': '#d62728'}  # 红色粗实线
+        'run_unet_diff':      {'label': 'Siam-UNet (Baseline)', 'style': '--', 'color': '#1f77b4'}, 
+        'run_resunet_concat': {'label': 'Siam-ResUNet (Strong)', 'style': '-.', 'color': '#ff7f0e'}, 
+        'run_sca_net_full':   {'label': 'SCA-Net (Ours)',       'style': '-',  'color': '#d62728'}
     }
 
     fig, axes = plt.subplots(2, 3, figsize=(18, 10))
@@ -56,7 +56,7 @@ def compare():
                         color=config['color'], label=config['label'], linewidth=lw, alpha=0.9)
 
     if valid_models_count == 0:
-        print("❌ 没有找到任何训练记录。")
+        print("no config")
         return
 
     for metric_key, title, ax in metrics_to_plot:
@@ -74,7 +74,7 @@ def compare():
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     save_path = './results/final_thesis_comparison.png'
     plt.savefig(save_path, dpi=300, bbox_inches='tight')
-    print(f"\n🎉 终极对比图已成功生成并保存至: {save_path}")
+    print(f"\nsaved to: {save_path}")
 
 if __name__ == '__main__':
     compare()

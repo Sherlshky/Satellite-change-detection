@@ -23,12 +23,12 @@ class UpFusion(nn.Module):
         self.fusion_mode = fusion_mode
         self.up = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
         
-        # 根据融合策略计算输入通道数
+        
         if self.fusion_mode == 'diff':
-            # 只接收 upsampled_feature + |skip_A - skip_B|
+            #  upsampled_feature + |skip_A - skip_B|
             conv_in = in_channels + skip_channels
         elif self.fusion_mode == 'concat':
-            # 接收 upsampled_feature + skip_A + skip_B
+            #  upsampled_feature + skip_A + skip_B
             conv_in = in_channels + skip_channels * 2
             
         self.conv = DoubleConv(conv_in, out_channels)
@@ -56,7 +56,7 @@ class SiameseUNet(nn.Module):
         self.down3 = nn.Sequential(nn.MaxPool2d(2), DoubleConv(256, 512))
         self.down4 = nn.Sequential(nn.MaxPool2d(2), DoubleConv(512, 1024))
 
-        # Decoder Bottleneck 处理
+        # Decoder Bottleneck 
         bottleneck_out = 1024 if fusion_mode == 'diff' else 2048
         self.bottleneck_conv = DoubleConv(bottleneck_out, 1024)
 

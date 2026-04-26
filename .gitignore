@@ -13,9 +13,11 @@ data/
 
 plot_sca_ablation*
 eval_all*
+eval_table*
 eval_thesis*
 compare*
 run*
+visualize_data*
 
 checkpoint/
 checkpoint.rar

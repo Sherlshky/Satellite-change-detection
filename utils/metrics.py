@@ -32,7 +32,7 @@ class Evaluator:
         recall = TP / (TP + FN + 1e-6)
         f1_score = 2 * (precision * recall) / (precision + recall + 1e-6)
         iou = TP / (TP + FP + FN + 1e-6)
-        accuracy = (TP + TN) / (TP + TN + FP + FN + 1e-6) # 新增总体准确率
+        accuracy = (TP + TN) / (TP + TN + FP + FN + 1e-6) 
 
         return {
             "IoU": iou.item(),
@@ -43,27 +43,27 @@ class Evaluator:
         }
     
 class BCEDiceLoss(nn.Module):
-    def __init__(self, bce_weight=0.5, dice_weight=0.5):
+    def __init__(self, bce_weight=0.9, dice_weight=0.1):
         super(BCEDiceLoss, self).__init__()
         self.bce_weight = bce_weight
         self.dice_weight = dice_weight
         self.bce = nn.BCEWithLogitsLoss()
 
     def forward(self, inputs, targets):
-        # 1. 计算 BCE Loss (注意 inputs 不需要经过 sigmoid，BCEWithLogitsLoss 内部自带)
+        
         bce_loss = self.bce(inputs, targets)
         
-        # 2. 计算 Dice Loss
+        
         inputs_sigmoid = torch.sigmoid(inputs)
         
-        # 展平 tensor 计算
+        
         inputs_flat = inputs_sigmoid.view(-1)
         targets_flat = targets.view(-1)
         
-        # Dice 公式: (2 * |X ∩ Y|) / (|X| + |Y|)
+        
         intersection = (inputs_flat * targets_flat).sum()
         dice_score = (2. * intersection + 1e-6) / (inputs_flat.sum() + targets_flat.sum() + 1e-6)
         dice_loss = 1.0 - dice_score
         
-        # 3. 组合
+        
         return self.bce_weight * bce_loss + self.dice_weight * dice_loss
