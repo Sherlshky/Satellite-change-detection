@@ -7,7 +7,7 @@
 ##  Overview
 This repository contains the official PyTorch implementation of the graduation project: **"Automatic Detection of Coastal and Landmark Changes in Satellite Imagery Using Deep Learning"**. 
 
-Change detection in high-resolution satellite imagery is challenging due to complex semantic representations and varied object scales. To address these issues, we propose **SCA-Net**, a novel Siamese network leveraging a Transformer-based encoder and advanced interaction mechanisms.
+Change detection in high-resolution satellite imagery is challenging due to complex semantic representations and varied object scales. To address these issues, we propose **CA-Net**, a novel Siamese network leveraging a Transformer-based encoder and advanced interaction mechanisms.
 
 ###  Features
 * **Siamese SegFormer-B1 Encoder:** Extracts robust, hierarchical feature representations with shared weights.
