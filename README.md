@@ -28,7 +28,7 @@ Project_Root/
 │       ├── val/              # Validation set (A/, B/, label/)
 │       └── test/             # Test set (A/, B/, label/)
 ├── models/                   # Model architectures
-│   ├── siamese_SCA_net.py    # Proposed SCA-Net
+│   ├── siamese_CA_net.py    # Proposed CA-Net
 │   ├── siamese_unet.py       # Siamese U-Net (Baseline)
 │   └── siamese_res_unet.py   # Siamese ResUNet (Baseline)
 ├── results/                  
