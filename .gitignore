@@ -1,5 +1,5 @@
 results/
-data/
+
 
 # 忽略绘图生成的文件（常见图片格式）
 *.png
@@ -9,18 +9,17 @@ data/
 *.svg
 *.bmp
 *.tif
-
+checkpoint
+data
 
 plot_sca_ablation*
 eval_all*
 eval_table*
 eval_thesis*
 compare*
-run*
+
 visualize_data*
 
-checkpoint/
-checkpoint.rar
 
 __pycache__/
 *.pyc

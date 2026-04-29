@@ -5,9 +5,8 @@
 ![Transformers](https://img.shields.io/badge/HuggingFace-Transformers-ffea00)
 
 ##  Overview
-This repository contains the official PyTorch implementation of the graduation project: **"Automatic Detection of Coastal and Landmark Changes in Satellite Imagery Using Deep Learning"**. 
 
-Change detection in high-resolution satellite imagery is challenging due to complex semantic representations and varied object scales. To address these issues, we propose **SCA-Net**, a novel Siamese network leveraging a Transformer-based encoder and advanced interaction mechanisms.
+Change detection in high-resolution satellite imagery is challenging due to complex semantic representations and varied object scales. To address these issues, we propose **CA-Net**, a novel Siamese network leveraging a Transformer-based encoder and advanced interaction mechanisms.
 
 ###  Features
 * **Siamese SegFormer-B1 Encoder:** Extracts robust, hierarchical feature representations with shared weights.
@@ -50,9 +49,14 @@ Project_Root/
 pip install -r requirements.txt
 ```
 ## Usage
-1. Data Preparation
-Download the LEVIR-CD dataset and organize it under the ./data/Levir-cd/ directory as shown in the Repository Structure.
-2. Training
+
+### 1. Data Preparation
+Please download the dataset from the link below:
+* **[Download LEVIR-CD Dataset (Google Drive)](https://drive.google.com/drive/folders/1dLuzldMRmbBNKPpUkX8Z53hi6NHLrWim)**
+
+Alternatively, we are planning to host the dataset on HuggingFace soon for easier access. Once downloaded, extract and organize the data under the `./data/Levir-cd/` directory as shown in the Repository Structure above.
+
+1. Training
 We provide an automated batch script run.bat that executes the full training pipeline, including baseline models and the SCA-Net ablation study.
 ```python
 run.bat
@@ -62,7 +66,7 @@ Alternatively, you can run individual models using train.py:
 python train.py --model unet --fusion_mode diff
 python train.py --model ca_net --ablation full
 ```
-3. Evaluation
+1. Evaluation
 ```python
 python plot_final_comparison.py
 ```

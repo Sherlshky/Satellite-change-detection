@@ -32,7 +32,7 @@ def get_args():
     parser.add_argument('--fusion_mode', type=str, default='diff', choices=['diff', 'concat'])
 
     parser.add_argument('--ablation', type=str, default='full', choices=['base', 'dpb', 'bi3', 'full'], 
-                        help="Ablation mode strictly for SCA-Net")
+                        help="Ablation mode strictly for CA-Net")
     parser.add_argument('--epochs', type=int, default=100)
     parser.add_argument('--batch_size', type=int, default=8) 
     parser.add_argument('--lr', type=float, default=1e-4)
@@ -81,7 +81,7 @@ def train():
     elif args.model == 'resunet':
         model = SiameseResUNet(fusion_mode=args.fusion_mode).to(DEVICE)
     elif args.model == 'ca_net':
-        model = SCANet(ablation=args.ablation).to(DEVICE)
+        model = CANet(ablation=args.ablation).to(DEVICE)
 
     # 3. Optimization
     criterion = DynamicCompositeLoss().to(DEVICE) 
